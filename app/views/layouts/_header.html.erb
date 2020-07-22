@@ -1,0 +1,85 @@
+<header class="site-header header-fullwidth">
+  <div class="topbar font-family-nav background-solid topbar-dark-skin" style="background-color: #f5f5f5;">
+    <div class="topbar-inner">
+      <div class="topbar-inner-column">
+        <div class="additional-info hidden-sm hidden-xs">
+          <!--a href="tel:(+1) 111-1111"><i class="si si-phone"></i> (+1) 111-1111</a>&nbsp;&nbsp;&nbsp;&nbsp;--> 
+          <a href="mailto:info@techno-soft.com"><i class="si si-email-border">&nbsp;</i>info@techno-soft.com</a>
+        </div>
+        <div class="social-bar text-no"><a href="https://www.facebook.com/technosoftsolutionsinc/" class="social-button sb-facebook sb-shape-no sb-monochrome sb-dark"> <i class="socicon-facebook unhvrd"></i> <i class="socicon-facebook hvrd"></i> </a><a href="https://www.linkedin.com/company/technosoft-solutions_2/" class="social-button sb-linkedin sb-shape-no sb-monochrome sb-dark"> <i class="socicon-linkedin unhvrd"></i> <i class="socicon-linkedin hvrd"></i> </a><a href="https://twitter.com/techno_soft" class="social-button sb-twitter sb-shape-no sb-monochrome sb-dark"> <i class="socicon-twitter unhvrd"></i> <i class="socicon-twitter hvrd"></i> </a><a href="https://www.pinterest.com/technosoftsolutions/" class="social-button sb-pinterest sb-shape-no sb-monochrome sb-dark"> <i class="socicon-pinterest unhvrd"></i> <i class="socicon-pinterest hvrd"></i> </a></div>
+      </div>
+      <div class="topbar-inner-column"></div>
+    </div>
+  </div>
+  <div class="navbar-horizontal navbar-ghost menu-skin-dark border-default-bottom" style="">
+    <div class="site-search">
+      <div class="inner">
+        <div class="search-form">
+          <form method="get" class="search-box" action="https://techno-soft.com/" autocomplete="off"> <input type="text" name="s" placeholder="Search" value=""> <button type="submit"><i class="si si-search"></i></button></form>
+          <div class="search-tools font-family-nav"> <span class="search-clear">Clear</span> <span class="search-close"><i class="si si-cross"></i></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-inner">
+      <div class="navbar-branding">
+        <div class="mobile-menu-toggle"> <i class="si si-menu"></i></div>
+        <a href="https://techno-soft.com/" class="site-logo" rel="home" itemprop="url" style="width: 75px;"><img src="https://techno-soft.com/wp-content/uploads/2018/06/cropped-logo-1-1-e1529661190841.png" class="custom-logo" alt="" itemprop="logo" width="150" height="158"></a><a href="https://techno-soft.com/" class="mobile-logo" style="width: 75px;"><img src="https://techno-soft.com/wp-content/uploads/2018/06/logo-1-1-e1529661190841.png" class="attachment-full size-full" alt="Technosoft Solutions logo" width="150" height="158"></a></div>
+      <div class="navbar-utils font-family-nav">
+        <div class="inner">
+          <div class="util site-search-toggle"> <i class="si si-search"></i></div>
+          <div class="util site-button">
+            <section class="widget widget_silicon_button">
+              <h2 class="widget-title">Contact Us</h2>
+              <a href="https://techno-soft.com/contact.html" class="btn btn-solid btn-pill btn-danger btn-nl btn-block waves-effect waves-light">Contact Us</a><span class="text-sm text-gray"></span></section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-wrap"><nav class="main-navigation font-family-nav">
+        <ul id="menu-export-menu-1" class="menu">
+          <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current-menu-ancestor current-menu-parent menu-item-1240"><%= link_to 'Projects', root_path %></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1242"><%= link_to 'Contributors', contributors_path %></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1241"><%= link_to 'Technologies', '#' %></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1243"><a href="https://techno-soft.com/about.html">About</a></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><a href="#">Contact</a></li>
+          <% if !admin_signed_in? %>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><%= link_to 'Login', new_admin_session_path %></li>
+          <% end %>
+        </ul>
+      </nav></div>
+  </div>
+  <div class="navbar-horizontal navbar-sticky menu-skin-dark border-default-bottom" style="background-color: rgb(255, 255, 255); display: none;">
+    <div class="site-search">
+      <div class="inner">
+        <div class="search-form">
+          <form method="get" class="search-box" action="https://techno-soft.com/" autocomplete="off"> <input type="text" name="s" placeholder="Search" value=""> <button type="submit"><i class="si si-search"></i></button></form>
+          <div class="search-tools font-family-nav"> <span class="search-clear">Clear</span> <span class="search-close"><i class="si si-cross"></i></span></div>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-inner">
+      <div class="navbar-branding">
+        <div class="mobile-menu-toggle"> <i class="si si-menu"></i></div>
+        <a href="https://techno-soft.com/" class="site-logo" rel="home" itemprop="url" style="width: 75px;"><img src="https://techno-soft.com/wp-content/uploads/2018/06/logo-1-1-e1529661190841.png" class="custom-logo" alt="Technosoft Solutions logo" itemprop="logo" width="150" height="158"></a></div>
+      <div class="navbar-utils font-family-nav">
+        <div class="inner">
+          <div class="util site-search-toggle"> <i class="si si-search"></i></div>
+          <div class="util site-button">
+            <section class="widget widget_silicon_button">
+              <h2 class="widget-title">Contact Us</h2>
+              <a href="https://techno-soft.com/contact.html" class="btn btn-solid btn-pill btn-danger btn-nl btn-block waves-effect waves-light">Contact Us</a><span class="text-sm text-gray"></span></section>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-wrap"><nav class="main-navigation font-family-nav">
+        <ul id="menu-export-menu-2" class="menu">
+          <li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current-menu-ancestor current-menu-parent menu-item-1240"><%= link_to 'Projects', root_path %></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1242"><%= link_to 'Contributors', contributors_path %></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1241"><%= link_to 'Technologies', '#' %></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1243"><a href="https://techno-soft.com/about.html">About</a></li>
+          <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><a href="#">Contact</a></li>
+        </ul>
+      </nav></div>
+  </div>
+</header>
