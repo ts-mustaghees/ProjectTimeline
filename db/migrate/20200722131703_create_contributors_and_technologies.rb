@@ -1,13 +1,13 @@
-class CreateContributersAndTechnologies < ActiveRecord::Migration[5.2]
+class CreateContributorsAndTechnologies < ActiveRecord::Migration[5.2]
   def change
-    create_table :contributers do |t|
+    create_table :contributors do |t|
       t.string :name, null: false, default: ""
       t.string :email
       t.string :image
-      t.text :description
+      t.text   :description
 
-      t.date :join_date
-      t.date :left_date
+      t.date   :join_date
+      t.date   :left_date
 
       t.timestamps
     end
@@ -18,8 +18,8 @@ class CreateContributersAndTechnologies < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :contributers_projects, id: false do |t|
-      t.references :contributer
+    create_table :contributors_projects, id: false do |t|
+      t.references :contributor
       t.references :project
     end
 
@@ -28,8 +28,8 @@ class CreateContributersAndTechnologies < ActiveRecord::Migration[5.2]
       t.references :technology
     end
 
-    add_index :contributers_projects, [:contributer_id, :project_id], unique: true
+    add_index :contributors_projects, [:contributor_id, :project_id], unique: true
     add_index :projects_technologies, [:project_id, :technology_id],  unique: true
-    add_index :categories_projects,   [:category_id, :project_id], unique: true
+    add_index :categories_projects,   [:category_id, :project_id],    unique: true
   end
 end

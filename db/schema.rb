@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2020_07_22_131703) do
     t.index ["project_id"], name: "index_categories_projects_on_project_id"
   end
 
-  create_table "contributers", force: :cascade do |t|
+  create_table "contributors", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email"
     t.string "image"
@@ -54,12 +54,12 @@ ActiveRecord::Schema.define(version: 2020_07_22_131703) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "contributers_projects", id: false, force: :cascade do |t|
-    t.bigint "contributer_id"
+  create_table "contributors_projects", id: false, force: :cascade do |t|
+    t.bigint "contributor_id"
     t.bigint "project_id"
-    t.index ["contributer_id", "project_id"], name: "index_contributers_projects_on_contributer_id_and_project_id", unique: true
-    t.index ["contributer_id"], name: "index_contributers_projects_on_contributer_id"
-    t.index ["project_id"], name: "index_contributers_projects_on_project_id"
+    t.index ["contributor_id", "project_id"], name: "index_contributors_projects_on_contributor_id_and_project_id", unique: true
+    t.index ["contributor_id"], name: "index_contributors_projects_on_contributor_id"
+    t.index ["project_id"], name: "index_contributors_projects_on_project_id"
   end
 
   create_table "projects", force: :cascade do |t|

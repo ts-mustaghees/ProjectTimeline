@@ -1,4 +1,4 @@
-<% #provide :title, 'Projects' %>
+<% provide :title, 'Projects' %>
 
 <div class="page-title page-title-dark page-title-normal" style="background-image: url(https://techno-soft.com/wp-content/uploads/2018/06/bg-ts-site.jpg);">
   <div class="inner">
@@ -22,10 +22,13 @@
               <li><a href="#" data-filter=".smart-on-fhir">SMART on FHIR</a></li>
             </ul>
           </nav>
-          <div id="portfolio-37d264b8-grid" class="masonry-grid isotope-grid col-3 grid-with-gap filtered-grid" style="position: relative; height: 897px;">
-            <div class="gutter-sizer"></div>
+          <div id="portfolio-37d264b8-grid" class="masonry-grid isotope-grid grid-with-gap filtered-grid row" style="position: relative; height: 897px;">
+            <%# <div class="gutter-sizer"></div> %>
             <div class="grid-sizer"></div>
-            <div class="grid-item hipaa hl7-integration smart-on-fhir" style="position: absolute; left: 0px; top: 0px;">
+
+            <%= render @projects %>
+
+            <%# <div class="grid-item hipaa hl7-integration smart-on-fhir" style="position: absolute; left: 0px; top: 0px;">
               <article class="portfolio-post portfolio-post-tile post-5419 silicon_portfolio type-silicon_portfolio status-publish has-post-thumbnail hentry silicon_portfolio_category-hipaa silicon_portfolio_category-hl7-integration silicon_portfolio_category-smart-on-fhir"> <img src="https://techno-soft.com/wp-content/uploads/2018/06/Ts-client-smart-app.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Ts client smart app" srcset="https://techno-soft.com/wp-content/uploads/2018/06/Ts-client-smart-app.jpg 450w, https://techno-soft.com/wp-content/uploads/2018/06/Ts-client-smart-app-300x233.jpg 300w" sizes="(max-width: 450px) 100vw, 450px" width="450" height="350">
                 <div class="portfolio-post-tile-icon-links"> <a href="https://techno-soft.com/behavioral-health.html" class="navi-link-color"><i class="si si-link"></i></a></div>
                 <h3 class="portfolio-tile-title"><a href="https://techno-soft.com/behavioral-health.html" class="text-white">Behavioral Health SMART App</a></h3>
@@ -123,7 +126,7 @@
                   <p class="portfolio-tile-text">HealthSlate Patient App &nbsp; Client:&nbsp;Hospital &amp; Health Care Company Purpose:&nbsp;Care &amp; Disease Management System HealthSlate Patient app is a chronic disease management system entirely developed by Technosoft. It's a native iOS and Android client-side application with JSF, Sprint, Elgg, MySQL backend on Amazon's HIPAA compliant private cloud on AWS and RDS. Healthslate patient app allows...</p>
                 </div>
               </article>
-            </div>
+            </div> %>
           </div>
           <section class="pagination font-family-nav border-default-top border-default-bottom text-center">
             <div class="spinner-wrap">
