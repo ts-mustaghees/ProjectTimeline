@@ -1,0 +1,78 @@
+<% provide :title, @project.title %>
+
+<div class="page-title page-title-dark page-title-normal" style="background-image: url(https://techno-soft.com/wp-content/uploads/2018/06/bg-ts-site.jpg);">
+  <div class="inner">
+    <div class="breadcrumbs"><!-- Breadcrumb NavXT 6.2.1 --> <span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to Technosoft Solutions." href="https://techno-soft.com" class="home"><span property="name">Home</span></a><meta property="position" content="1"></span><span class="separator background-primary"></span><span property="itemListElement" typeof="ListItem"><a property="item" typeof="WebPage" title="Go to the HIPAA Category archives." href="https://techno-soft.com/portfolio-category/hipaa/" class="taxonomy silicon_portfolio_category"><span property="name">HIPAA</span></a><meta property="position" content="2"></span><span class="separator background-primary"></span><span property="itemListElement" typeof="ListItem"><span property="name">Behavioral Health SMART App</span><meta property="position" content="3"></span></div>
+    <h1><%= @project.title %></h1>
+    <div class="page-title-meta border-default-top">
+      <div class="post-meta font-family-nav"><%= link_to raw("<i class='si si-time'></i> June 18, 2018"), project_path(@project), class: 'post-date navi-link-hover-color' %></div>
+      <div class="post-categories font-family-nav"><a href="https://techno-soft.com/portfolio-category/hipaa/" style="background-color: #3d59f9; color: #ffffff;">HIPAA</a><a href="https://techno-soft.com/portfolio-category/hl7-integration/" style="background-color: #3d59f9; color: #ffffff;">HL7 INTEGRATION</a><a href="https://techno-soft.com/portfolio-category/smart-on-fhir/" style="background-color: #3d59f9; color: #ffffff;">SMART on FHIR</a></div>
+    </div>
+  </div>
+</div>
+<article id="post-5419" class="post-5419 silicon_portfolio type-silicon_portfolio status-publish has-post-thumbnail hentry silicon_portfolio_category-hipaa silicon_portfolio_category-hl7-integration silicon_portfolio_category-smart-on-fhir mt-5">
+  <div class="container"></div>
+  <%= raw(@project.description) %>
+  <section class="fw-section layout-boxed without-overlay without-parallax" data-offset-top="180">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="text-block">
+            
+            <p><%= image_tag @project.image, class: 'aligncenter wp-image-5461 size-full', alt: 'Project Image' %></p>
+            <h2>Behavioral Health SMART on FHIR app</h2>
+            <p><strong>Client:</strong> Large Children’s Hospital on the East Coast<br>
+               <strong>Purpose:</strong> Improving the quality of care for ADHD patients.</p>
+            <p>Our client is a Behavioral health Information system focused on providing evidence-based tools for improving the quality of care for ADHD
+               (<b>Attention deficit hyperactivity disorder</b>) patients. Software is used by physicians, parents, school teachers &amp;
+               other stake-holders in the ADHD patient’s continued care to document their findings about the patient’s progress. Software in-turn
+               consolidates data from all these sources &amp; presents to physicians reports that help in deciding medication and other treatment options for the patients.
+               This consolidated report needed to be shown within the EHR of hospitals. A SMART on FHIR app was developed to fulfill this need.</p>
+            <h3><span style="color: #000000;"><strong>Solution</strong></span></h3>
+            <p>A SMART on FHIR JavaScript app was developed to show a subset of the existing consolidated report.
+               Most of the backend .Net code was utilized to develop the report and evolving medications list. A chain of trust solutions was
+               created to authenticate users within software utilizing the authenticated token from <a href="https://techno-soft.com/integrating-smart-app-with-epic.html" target="_blank" rel="noopener noreferrer">Epic (EHR)</a>
+               and an FHIR server URL. The FHIR server URLs were whitelisted to ensure the chain of trust. The token was first utilized to get user context from the
+               FHIR server URL to a: ensure token’s validity and b: get user context for authentication in software. After the user authentication, the patient context was
+               used to see if a patient was found within software using primary and secondary matching criteria for the mapped facility.
+               If no patient was found then a new patient record was created. If a patient is found within system, then the consolidated report for that patient
+               was generated and passed on to the SMART on FHIR app. Different patient assessments were also integrated into the SMART on FHIR app. This SMART on FHIR app
+               has been integrated into <a href="https://techno-soft.com/integrating-smart-app-with-epic.html" target="_blank" rel="noopener noreferrer">Epic</a>
+               and <a href="https://techno-soft.com/integrating-smart-app-with-cerner.html" target="_blank" rel="noopener noreferrer">Cerner</a>. <a href="https://techno-soft.com/integrating-smart-app-with-allscripts.html" target="_blank" rel="noopener noreferrer">Allscripts</a> integration testing underway.
+               All vanilla FHIR calls are used and no EHR specific APIs are used to keep one SMART on FHIR</p>
+            <h3><span style="color: #000000;"><strong>Requirements</strong></span></h3>
+            <p>The existing web app was needed to be visible within each EHR starting with Epic. The Physician should be able to see the app in a web frame in the EHR by clicking on a tab in the Patient‘s Record. Upon accessing the tab that the Patient’s identifier information and current medication needs to be passed to the software web server, which will either return a “No Patient Found” message and create the patient within the software database or show a customized report in a web frame. EHR users need not enter user credentials into the Behavioral health app.</p>
+            <h3><span style="color: #000000;"><strong>Technology Used</strong></span></h3>
+            <p>ASP Web Forms, Entity Framework, ADO.Net, jQuery, JavaScript, VB.Net, C#, Web Services, ASP.net Forms Authentication, OAuth 2.0.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="fw-section layout-boxed without-overlay without-parallax" data-offset-top="180">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="vc_empty_space" style="height: 15px"><span class="vc_empty_space_inner"></span></div>
+          <div class="text-block">
+            <h3><span style="color: #000000;">About Technosoft:</span></h3>
+            <p>We have extensive exposure and experience in custom healthcare and medical software development and Healthcare Integration. Our healthcare software offerings include Electronic medical records, HMIS, EHR, FHIR, SMART on FHIR apps, Medical billing and coding, medical practice management.</p>
+            <p>Engage with our business and technology experts for strategic solutions that address the full scope of healthcare issues today, from compliance through integrated health management.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="fw-section layout-boxed without-overlay without-parallax mb-5" data-offset-top="180">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
+          <div class="text-block">
+            <h3><span style="color: #222222;">Starting any Healthcare Integration Project? Get Your questions answered in a Free 30 minutes consultancy!</span></h3>
+          </div>
+          <a href="https://techno-soft.com/contact.html" target="_blank" class="btn btn-solid btn-pill btn-primary btn-nl">Contact Us</a></div>
+      </div>
+    </div>
+  </section>
+</article>

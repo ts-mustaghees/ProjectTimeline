@@ -3,7 +3,7 @@
     <div class="topbar-inner">
       <div class="topbar-inner-column">
         <div class="additional-info hidden-sm hidden-xs">
-          <!--a href="tel:(+1) 111-1111"><i class="si si-phone"></i> (+1) 111-1111</a>&nbsp;&nbsp;&nbsp;&nbsp;--> 
+          <!--a href="tel:(+1) 111-1111"><i class="si si-phone"></i> (+1) 111-1111</a>&nbsp;&nbsp;&nbsp;&nbsp;-->
           <a href="mailto:info@techno-soft.com"><i class="si si-email-border">&nbsp;</i>info@techno-soft.com</a>
         </div>
         <div class="social-bar text-no"><a href="https://www.facebook.com/technosoftsolutionsinc/" class="social-button sb-facebook sb-shape-no sb-monochrome sb-dark"> <i class="socicon-facebook unhvrd"></i> <i class="socicon-facebook hvrd"></i> </a><a href="https://www.linkedin.com/company/technosoft-solutions_2/" class="social-button sb-linkedin sb-shape-no sb-monochrome sb-dark"> <i class="socicon-linkedin unhvrd"></i> <i class="socicon-linkedin hvrd"></i> </a><a href="https://twitter.com/techno_soft" class="social-button sb-twitter sb-shape-no sb-monochrome sb-dark"> <i class="socicon-twitter unhvrd"></i> <i class="socicon-twitter hvrd"></i> </a><a href="https://www.pinterest.com/technosoftsolutions/" class="social-button sb-pinterest sb-shape-no sb-monochrome sb-dark"> <i class="socicon-pinterest unhvrd"></i> <i class="socicon-pinterest hvrd"></i> </a></div>
@@ -44,6 +44,9 @@
           <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><a href="#">Contact</a></li>
           <% if !admin_signed_in? %>
             <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><%= link_to 'Login', new_admin_session_path %></li>
+          <% else %>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><%= link_to 'Admin Panel', admin_path %></li>
+            <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1244"><%= link_to 'Logout', destroy_admin_session_path, method: :delete %></li>
           <% end %>
         </ul>
       </nav></div>
@@ -83,3 +86,24 @@
       </nav></div>
   </div>
 </header>
+
+<% if !flash.empty? %>
+  <div id="notifications" class="my-3 mx-5">
+    <% flash.each do |message_type, message| %>
+      <%
+        # swap devise flash keys for bootstrap ones
+        case message_type
+          when 'alert'
+            message_type = 'warning'
+          when 'notice'
+            message_type = 'info'
+          when 'error'
+            message_type = 'danger'
+        end
+      %>
+      <%= content_tag(:div, raw(message + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>'), class: "alert alert-#{message_type} alert-dismissible fade show", role: :alert) %>
+    <% end %>
+  </div>
+<% end %>

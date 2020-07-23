@@ -1,0 +1,20 @@
+<% provide :title, 'Technologies' %>
+
+<h3>Technologies</h3>
+
+<table>
+<thead>
+    <tr>
+        <th>Title</th>
+        <th># of Projects</th>
+    </tr>
+</thead>
+<% @technologies.each do |t| %>
+  <tr>
+    <td><%= t.title %></td>
+    <td><%= t.projects.size %></td>
+    <td><%= link_to 'Edit', edit_technology_path(t), remote: true, class: 'text-info' %></td>
+    <td><%= link_to 'Delete', technology_path(t), method: :delete, class: 'text-danger' %></td>
+  </tr>
+<% end %>
+</table>

@@ -1,0 +1,11 @@
+<%= provide :title, 'Projects' %>
+
+<h3>Projects</h3>
+
+<table>
+<% @projects.each do |p| %>
+  <tr>
+    <td><%= p.title %></td>
+  </tr>
+<% end %>
+</table>

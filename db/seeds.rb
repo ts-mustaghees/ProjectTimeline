@@ -6,10 +6,32 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Admin.create([
+    { email: 'admin@yahoo.com', password: 'password', password_confirmation: 'password' }
+])
+
 projects = Project.create([
-    { title: 'US Health Project',       description: '<h1>US Health Project</h1><h3>By US Department of Health</h3>', start_date: Date.new(2001, 11, 27), finish_date: Date.new(2003,7,17) },
-    { title: 'Common Welfare Program',  description: '<h1>Hello world</h1>', start_date: Date.new(2012, 1, 1), finish_date: Date.new(2013,6,5) },
-    { title: 'COVID19 Vaccine Project', description: '<p>asdf zxcv</p>', start_date: Date.new(2020, 6, 15), finish_date: Date.new(2022,7,5) }
+    {
+        title: 'US Health Project',
+        description: '<h1>US Health Project</h1><h3>By US Department of Health</h3>',
+        start_date: Date.new(2001, 11, 27),
+        finish_date: Date.new(2003,7,17),
+        image: '/uploads/proj1.jpg'
+    },
+    {
+        title: 'Common Welfare Program',
+        description: '<h1>Hello world</h1>',
+        start_date: Date.new(2012, 1, 1),
+        finish_date: Date.new(2013,6,5),
+        image: '/uploads/proj2.jpg'
+    },
+    {
+        title: 'COVID19 Vaccine Project',
+        description: '<p>asdf zxcv</p>',
+        start_date: Date.new(2020, 6, 15),
+        finish_date: Date.new(2022,7,5),
+        image: '/uploads/proj3.jpg'
+    }
 ])
 
 categories = Category.create([

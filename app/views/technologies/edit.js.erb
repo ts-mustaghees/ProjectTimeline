@@ -1,0 +1,10 @@
+ele = $('tbody tr:nth-child(<%= @technology.id %>)')
+
+ele.find('td').addClass('hidden')
+ele.append(' \
+  <td><%= form_for @technology, url: technology_path(@technology) do |f| %> \
+    <%= f.text_field :title, class: "form-control" %> \
+    <%= f.submit "Update", class: 'btn btn-primary' %> \
+    <button class="btn btn-danger" type="button" onclick="((e) => { ele.find(\'td:not(.hidden)\').remove(); $(\'td.hidden\').removeClass(\'hidden\') })()">Cancel</button></td> \
+  <% end %>
+')

@@ -1,0 +1,23 @@
+<% provide :title, " | Admin Panel" %>
+<%= render 'layouts/head' %>
+<%= render 'layouts/header' %>
+
+<div class="content-wrapper">
+  <div class="container-fluid my-5">
+    <div class="row">
+      <aside class="col-4">
+        <nav class="nav flex-column">
+          <%= link_to 'Projects',     admin_projects_path, class: "nav-link active" %>
+          <%= link_to 'Categories',   admin_categories_path, class: "nav-link" %>
+          <%= link_to 'Technologies', admin_technologies_path, class: "nav-link" %>
+          <%= link_to 'Contributors', admin_contributors_path, class: "nav-link" %>
+        </nav>
+      </aside>
+      <main class="col-8">
+        <%= yield %>
+      </main>
+    </div>
+  </div>
+</div>
+
+<%= render 'layouts/footer' %>

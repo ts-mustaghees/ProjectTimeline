@@ -1,7 +1,7 @@
 <div class="grid-item hipaa hl7-integration smart-on-fhir col-4">
   <article class="portfolio-post portfolio-post-tile post-5419 silicon_portfolio type-silicon_portfolio status-publish has-post-thumbnail hentry silicon_portfolio_category-hipaa silicon_portfolio_category-hl7-integration silicon_portfolio_category-smart-on-fhir">
-    <img src="https://techno-soft.com/wp-content/uploads/2018/06/Ts-client-smart-app.jpg" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="Ts client smart app" srcset="https://techno-soft.com/wp-content/uploads/2018/06/Ts-client-smart-app.jpg 450w, https://techno-soft.com/wp-content/uploads/2018/06/Ts-client-smart-app-300x233.jpg 300w" sizes="(max-width: 450px) 100vw, 450px" width="450" height="350">
-    <div class="portfolio-post-tile-icon-links"> <a href="https://techno-soft.com/behavioral-health.html" class="navi-link-color"><i class="si si-link"></i></a></div>
+    <%= image_tag project.image, alt: 'Project thumbnail', class: "attachment-post-thumbnail size-post-thumbnail wp-post-image", width: "450", height: "350" %>
+    <div class="portfolio-post-tile-icon-links"> <%= link_to raw('<i class="si si-link"></i>'), project_path(project), class: 'navi-link-color' %></div>
     <h3 class="portfolio-tile-title">
       <%= link_to project.title, project_path(project), class: 'text-white' %>
     </h3>
@@ -10,7 +10,7 @@
       <h3 class="portfolio-tile-title">
         <%= link_to project.title, project_path(project), class: 'navi-link-color navi-link-hover-color' %>
       </h3>
-      <p class="portfolio-tile-text">Behavioral Health SMART on FHIR app Client: Large Children's Hospital on the East Coast Purpose: Improving the quality of care for ADHD patients. Our client is a Behavioral health Information system focused on providing evidence-based tools for improving the quality of care for ADHD (Attention deficit hyperactivity disorder) patients. Software is used by physicians, parents,...</p>
+      <!--p class="portfolio-tile-text">Behavioral Health SMART on FHIR app Client: Large Children's Hospital on the East Coast Purpose: Improving the quality of care for ADHD patients. Our client is a Behavioral health Information system focused on providing evidence-based tools for improving the quality of care for ADHD (Attention deficit hyperactivity disorder) patients. Software is used by physicians, parents,...</p-->
     </div>
   </article>
 </div>
