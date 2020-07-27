@@ -21,5 +21,6 @@ class Admins::AdminsController < ApplicationController
     def contributors
         @new_contributor = Contributor.new
         @contributors    = Contributor.left_outer_joins(:projects).group("contributors.id").select(:id, :name, "count(projects.id) as projects_count")
+        @technologies    = Technology.all
     end
 end

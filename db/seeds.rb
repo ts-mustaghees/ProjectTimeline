@@ -53,6 +53,7 @@ technologies = Technology.create([
 contributors = Contributor.create([
     {
         name: 'M Irfan',
+        email: 'irfan@google.com'
         description: '<h1>M Irfan</h1><p>Hello world</p>',
         join_date: Date.new(2005, 6, 1),
         left_date: nil
@@ -65,6 +66,7 @@ contributors = Contributor.create([
     },
     {
         name: 'Bill Gates',
+        email: 'whgates@gates.com'
         description: '<h1>W. H. Gates</h1><p>Hello w</p>',
         join_date: Date.new(1997, 4, 7),
         left_date: Date.new(2005, 11, 30)

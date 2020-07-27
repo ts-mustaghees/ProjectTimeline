@@ -1,37 +1,63 @@
-modal = '<div class="modal fade" id="editContributorModal" tabindex="-1" role="dialog" aria-labelledby="editContributorModalLabel" aria-hidden="true"> \
-  <div class="modal-dialog" role="document"> \
-    <div class="modal-content"> \
-      <div class="modal-header"> \
-        <h5 class="modal-title" id="editContributorModalLabel">Edit <%= @contributor.name %></h5> \
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> \
-          <span aria-hidden="true">&times;</span> \
-        </button> \
-      </div> \
-      <div class="modal-body"> \
-        <%= form_for @contributor, url: contributor_path(@contributor) do |f| %> \
-          <div class="form-group"> \
-            <%= f.label :name %> \
-            <%= f.text_field :name, class: 'form-control' %> \
-          </div> \
-          <div class="form-group"> \
-            <%= f.label :technologies %> \
-            <select class="multi-select" name="technologies[]" multiple="multiple"> \
+modal = `<div class="modal fade" id="editContributorModal" tabindex="-1" role="dialog" aria-labelledby="editContributorModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editContributorModalLabel">Edit <%= @contributor.name %></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for @contributor, url: contributor_path(@contributor) do |f| %>
+          <div class="form-group">
+            <%= f.label 'Avatar' %>
+            <%= f.text_field :image, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :join_date %>
+            <%= f.date_field :join_date, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :left_date %>
+            <%= f.date_field :left_date, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :technologies %>
+            <select class="multi-select" name="technologies[]" multiple="multiple">
               <% contributor_technologies = @contributor.technologies %>
               <% @technologies.each do |t| %>
-                <option value="<%= t[:id] %>" <%= 'selected' if contributor_technologies.include?(t) %>><%= t[:title] %></option> \
+                <option value="<%= t[:id] %>" <%= 'selected' if contributor_technologies.any? {|c| c.id == t[:id]} %>><%= t[:title] %></option>
               <% end %>
-            </select> \
-          </div> \
+            </select>
+          </div>
+          <div class="form-group">
+            <%= f.label :description %>
+            <%= f.text_area :description, id: 'edit-editor', class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit 'Update', class: 'btn btn-primary' %>
+          </div>
         <% end %>
-      </div> \
-      <div class="modal-footer"> \
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> \
-        <button type="button" class="btn btn-primary">Save changes</button> \
-      </div></div></div></div>'
+      </div></div></div></div>`
 
 $('#editContributorModal').remove()
 $('body').append(modal)
 $('#editContributorModal').modal()
 $('.multi-select').select2({
-  theme: "bootstrap"
+  theme: "bootstrap",
+  tags: true
 })
+
+ClassicEditor
+  .create( document.querySelector( '#edit-editor' ) )
+  .catch( error => {
+      console.log( error )
+  } )

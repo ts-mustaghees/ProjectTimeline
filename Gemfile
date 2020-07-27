@@ -69,4 +69,4 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'carrierwave'
 gem 'devise'
-gem "select2-rails"
+gem 'select2-rails'
