@@ -39,7 +39,7 @@
               <%= f.label :technologies %>
               <select class="multi-select" name="technologies[]" multiple="multiple">
                 <% @technologies.each do |t| %>
-                  <option value="<%= t[:id] %>"><%= t[:title] %></option>
+                  <option value="<%= t[:title] %>"><%= t[:title] %></option>
                 <% end %>
               </select>
             </div>
@@ -61,7 +61,7 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th># of Projects</th>
+      <th>Projects</th>
       <th>Technologies</th>
     </tr>
   </thead>
@@ -70,8 +70,8 @@
       <td><%= c.name %></td>
       <td><%= c.projects_count %></td>
       <td><%= c.technologies.size %></td>
-      <td><%= link_to 'Edit', edit_contributor_path(c), remote: true, class: 'text-info' %></td>
-      <td><%= link_to 'Delete', contributor_path(c), method: :delete, class: 'text-danger' %></td>
+      <td><%= link_to raw("<i class='fa fa-edit'></i>"), edit_contributor_path(c), remote: true, class: 'text-info' %></td>
+      <td><%= link_to raw("<i class='fa fa-trash'></i>"), contributor_path(c), method: :delete, class: 'text-danger' %></td>
     </tr>
   <% end %>
 </table>

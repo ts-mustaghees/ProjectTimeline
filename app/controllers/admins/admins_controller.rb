@@ -4,8 +4,11 @@ class Admins::AdminsController < ApplicationController
     layout 'admin'
 
     def show
-        @new_project = Project.new
-        @projects    = Project.all
+        @new_project  = Project.new
+        @projects     = Project.left_outer_joins(:categories).group("projects.id").select(:id, :title, "count(categories.id) as categories_count")
+        @technologies = Technology.all
+        @categories   = Category.all
+        @contributors = Contributor.all
     end
 
     def categories

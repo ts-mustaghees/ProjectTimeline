@@ -34,15 +34,15 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th># of Projects</th>
+      <th>Projects</th>
     </tr>
   </thead>
   <% @technologies.each do |t| %>
     <tr>
       <td><%= t.title %></td>
       <td><%= t.projects_count %></td>
-      <td><%= link_to 'Edit', edit_technology_path(t), remote: true, class: 'text-info' %></td>
-      <td><%= link_to 'Delete', technology_path(t), method: :delete, class: 'text-danger' %></td>
+      <td><%= link_to raw("<i class='fa fa-edit'></i>"), edit_technology_path(t), remote: true, class: 'text-info' %></td>
+      <td><%= link_to raw("<i class='fa fa-trash'></i>"), technology_path(t), method: :delete, class: 'text-danger' %></td>
     </tr>
   <% end %>
 </table>

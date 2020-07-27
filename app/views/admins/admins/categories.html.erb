@@ -34,15 +34,15 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th># of Projects</th>
+      <th>Projects</th>
     </tr>
   </thead>
   <% @categories.each do |c| %>
     <tr>
       <td><%= c.name %></td>
       <td><%= c.projects_count %></td>
-      <td><%= link_to 'Edit', edit_category_path(c), remote: true, class: 'text-info' %></td>
-      <td><%= link_to 'Delete', category_path(c), method: :delete, class: 'text-danger' %></td>
+      <td><%= link_to raw("<i class='fa fa-edit'></i>"), edit_category_path(c), remote: true, class: 'text-info' %></td>
+      <td><%= link_to raw("<i class='fa fa-trash'></i>"), category_path(c), method: :delete, class: 'text-danger' %></td>
     </tr>
   <% end %>
 </table>

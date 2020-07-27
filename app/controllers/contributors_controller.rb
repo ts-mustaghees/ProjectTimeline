@@ -19,6 +19,13 @@ class ContributorsController < ApplicationController
         new_contrib = Contributor.new(permitted_params)
 
         if new_contrib.save
+            # Add technologies
+            technologies = params[:technologies]
+            technologies.each do |t|
+                t = Technology.find_or_create_by(title: t)
+                new_contrib.technologies << t
+            end
+
             flash[:success] = new_contrib.name + ' created!'
         else
             flash[:danger] = new_contrib.name + ' could not be created!'
@@ -30,6 +37,23 @@ class ContributorsController < ApplicationController
 
     def update
         if @contributor.update_attributes(permitted_params)
+            technologies = params[:technologies]
+
+            technologies.each do |t|
+                t = Technology.find_or_create_by(title: t)
+                if !@contributor.technologies.include? t
+                    @contributor.technologies << t
+                end
+            end
+
+            # remove non-submitted technologies
+            contributor_technologies = @contributor.technologies
+            contributor_technologies.each do |t|
+                if !technologies.include? t.title
+                    @contributor.technologies.delete(t)
+                end
+            end
+
             flash[:success] = @contributor.name + ' updated!'
         else
             flash[:danger] = @contributor.name + ' could not be updated!'

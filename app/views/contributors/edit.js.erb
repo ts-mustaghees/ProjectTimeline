@@ -34,7 +34,7 @@ modal = `<div class="modal fade" id="editContributorModal" tabindex="-1" role="d
             <select class="multi-select" name="technologies[]" multiple="multiple">
               <% contributor_technologies = @contributor.technologies %>
               <% @technologies.each do |t| %>
-                <option value="<%= t[:id] %>" <%= 'selected' if contributor_technologies.any? {|c| c.id == t[:id]} %>><%= t[:title] %></option>
+                <option value="<%= t[:title] %>" <%= 'selected' if contributor_technologies.any? {|c| c.id == t[:id]} %>><%= t[:title] %></option>
               <% end %>
             </select>
           </div>
