@@ -1,20 +1,48 @@
 <% provide :title, 'Technologies' %>
 
-<h3>Technologies</h3>
+<div class="d-flex align-items-center   ">
+  <h3>Technologies</h3>
+  <button class="btn btn-primary ml-3" data-toggle="modal" data-target="#addTechnologyModal">+ Add New</button>
+
+  <div class="modal fade" id="addTechnologyModal" tabindex="-1" role="dialog" aria-labelledby="addNewTechnologyModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addNewTechnologyModalLabel">Add New Technology</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_for @new_technology, url: technologies_path, remote: true do |f| %>
+            <div class="form-group">
+              <%= f.label :title %>
+              <%= f.text_field :title, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit 'Add', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <table>
-<thead>
+  <thead>
     <tr>
-        <th>Title</th>
-        <th># of Projects</th>
+      <th>Title</th>
+      <th># of Projects</th>
     </tr>
-</thead>
-<% @technologies.each do |t| %>
-  <tr>
-    <td><%= t.title %></td>
-    <td><%= t.projects.size %></td>
-    <td><%= link_to 'Edit', edit_technology_path(t), remote: true, class: 'text-info' %></td>
-    <td><%= link_to 'Delete', technology_path(t), method: :delete, class: 'text-danger' %></td>
-  </tr>
-<% end %>
+  </thead>
+  <% @technologies.each do |t| %>
+    <tr>
+      <td><%= t.title %></td>
+      <td><%= t.projects_count %></td>
+      <td><%= link_to 'Edit', edit_technology_path(t), remote: true, class: 'text-info' %></td>
+      <td><%= link_to 'Delete', technology_path(t), method: :delete, class: 'text-danger' %></td>
+    </tr>
+  <% end %>
 </table>

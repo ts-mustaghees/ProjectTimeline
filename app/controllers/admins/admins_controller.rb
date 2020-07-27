@@ -1,19 +1,25 @@
 class Admins::AdminsController < ApplicationController
+    before_action :authenticate_admin!
+
     layout 'admin'
 
     def show
-        @projects = Project.all
+        @new_project = Project.new
+        @projects    = Project.all
     end
 
     def categories
-        @categories = Category.all
+        @new_category = Category.new
+        @categories   = Category.left_outer_joins(:projects).group("categories.id").select(:id, :name, "count(projects.id) as projects_count")
     end
 
     def technologies
-        @technologies = Technology.all
+        @new_technology = Technology.new
+        @technologies   = Technology.left_outer_joins(:projects).group("technologies.id").select(:id, :title, "count(projects.id) as projects_count")
     end
 
     def contributors
-        @contributors = Contributor.all
+        @new_contributor = Contributor.new
+        @contributors    = Contributor.left_outer_joins(:projects).group("contributors.id").select(:id, :name, "count(projects.id) as projects_count")
     end
 end

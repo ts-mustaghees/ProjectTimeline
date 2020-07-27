@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_084133) do
   create_table "contributors", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email"
-    t.string "image"
+    t.string "image", default: "/assets/default-profile.png", null: false
     t.text "description"
     t.date "join_date"
     t.date "left_date"
@@ -60,6 +60,14 @@ ActiveRecord::Schema.define(version: 2020_07_23_084133) do
     t.index ["contributor_id", "project_id"], name: "index_contributors_projects_on_contributor_id_and_project_id", unique: true
     t.index ["contributor_id"], name: "index_contributors_projects_on_contributor_id"
     t.index ["project_id"], name: "index_contributors_projects_on_project_id"
+  end
+
+  create_table "contributors_technologies", id: false, force: :cascade do |t|
+    t.bigint "contributor_id"
+    t.bigint "technology_id"
+    t.index ["contributor_id", "technology_id"], name: "index_contributors_technologies", unique: true
+    t.index ["contributor_id"], name: "index_contributors_technologies_on_contributor_id"
+    t.index ["technology_id"], name: "index_contributors_technologies_on_technology_id"
   end
 
   create_table "projects", force: :cascade do |t|

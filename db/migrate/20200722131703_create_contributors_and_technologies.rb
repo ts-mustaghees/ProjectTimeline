@@ -1,9 +1,9 @@
 class CreateContributorsAndTechnologies < ActiveRecord::Migration[5.2]
   def change
     create_table :contributors do |t|
-      t.string :name, null: false, default: ""
+      t.string :name,  null: false, default: ""
       t.string :email
-      t.string :image
+      t.string :image, null: false, default: "/assets/default-profile.png"
       t.text   :description
 
       t.date   :join_date
@@ -28,8 +28,14 @@ class CreateContributorsAndTechnologies < ActiveRecord::Migration[5.2]
       t.references :technology
     end
 
-    add_index :contributors_projects, [:contributor_id, :project_id], unique: true
-    add_index :projects_technologies, [:project_id, :technology_id],  unique: true
-    add_index :categories_projects,   [:category_id, :project_id],    unique: true
+    create_table :contributors_technologies, id: false do |t|
+      t.references :contributor
+      t.references :technology
+    end
+
+    add_index :contributors_projects,     [:contributor_id, :project_id],    unique: true
+    add_index :projects_technologies,     [:project_id, :technology_id],     unique: true
+    add_index :categories_projects,       [:category_id, :project_id],       unique: true
+    add_index :contributors_technologies, [:contributor_id, :technology_id], unique: true, name: 'index_contributors_technologies'
   end
 end

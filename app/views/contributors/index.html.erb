@@ -1,3 +1,25 @@
 <% provide :title, 'Contributors' %>
 
-<h1>Hello contrib</h1>
+<div class="page-title page-title-dark page-title-normal" style="background-image: url(https://techno-soft.com/wp-content/uploads/2018/06/bg-ts-site.jpg);">
+  <div class="inner">
+    <div class="breadcrumbs"><!-- Breadcrumb NavXT 6.2.1 -->
+      <span property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage" title="Go to Technosoft Solutions." href="<%= root_url %>" class="home">
+          <span property="name">Home</span>
+        </a>
+        <meta property="position" content="1">
+      </span>
+      <span class="separator background-primary"></span>
+      <span property="itemListElement" typeof="ListItem">
+        <span property="name">Contributors</span>
+        <meta property="position" content="2">
+      </span>
+    </div>
+    <h1>Contributors</h1>
+  </div>
+</div>
+
+<% @contributors.each do |c| %>
+    <h2><%= c.name %></h2>
+    <%= image_tag c.image, alt: 'Profile pic', width: 300, height: 300 %>
+<% end %>

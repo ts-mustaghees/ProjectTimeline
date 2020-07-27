@@ -1,9 +1,48 @@
-<h3>Categories</h3>
+<% provide :title, 'Categories' %>
+
+<div class="d-flex align-items-center">
+  <h3>Categories</h3>
+  <button class="btn btn-primary ml-3" data-toggle="modal" data-target="#addCategoryModal">+ Add New</button>
+
+  <div class="modal fade" id="addCategoryModal" tabindex="-1" role="dialog" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addCategoryModalLabel">Add New Category</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <%= form_for @new_category, url: categories_path, remote: true do |f| %>
+            <div class="form-group">
+              <%= f.label :name %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit 'Add', class: 'btn btn-primary' %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <table>
-<% @categories.each do |c| %>
-  <tr>
-    <td><%= c.name %></td>
-  </tr>
-<% end %>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th># of Projects</th>
+    </tr>
+  </thead>
+  <% @categories.each do |c| %>
+    <tr>
+      <td><%= c.name %></td>
+      <td><%= c.projects_count %></td>
+      <td><%= link_to 'Edit', edit_category_path(c), remote: true, class: 'text-info' %></td>
+      <td><%= link_to 'Delete', category_path(c), method: :delete, class: 'text-danger' %></td>
+    </tr>
+  <% end %>
 </table>

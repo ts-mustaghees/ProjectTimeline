@@ -17,3 +17,10 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+//= require select2
+
+function editorCancel(n) {
+    const editor = $('#editor-' + n)
+    editor.parent().find('td.hidden').removeClass('hidden')
+    editor.remove()
+}

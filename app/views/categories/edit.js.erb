@@ -1,0 +1,10 @@
+ele = $('tbody tr:contains("<%= @category.name %>")')
+
+ele.find('td').addClass('hidden')
+ele.append(' \
+  <td id="editor-<%= @category.id %>"><%= form_for @category, url: category_path(@category) do |f| %> \
+    <%= f.text_field :name, class: "form-control" %> \
+    <%= f.submit "Update", class: 'btn btn-primary' %> \
+    <button class="btn btn-danger" type="button" onclick="editorCancel(<%= @category.id %>)">Cancel</button></td> \
+  <% end %>
+')

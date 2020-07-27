@@ -51,9 +51,24 @@ technologies = Technology.create([
 ])
 
 contributors = Contributor.create([
-    { name: 'M Irfan',    description: '<h1>M Irfan</h1><p>Hello world</p>', join_date: Date.new(2005, 6, 1),  left_date: nil },
-    { name: 'Steve Jobs', description: '<h1>S. Jobs</h1><p>Hello world</p>', join_date: Date.new(2011, 3, 15), left_date: Date.new(2013, 5, 6) },
-    { name: 'Bill Gates', description: '<h1>W. H. Gates</h1><p>Hello w</p>', join_date: Date.new(1997, 4, 7),  left_date: Date.new(2005, 11, 30) }
+    {
+        name: 'M Irfan',
+        description: '<h1>M Irfan</h1><p>Hello world</p>',
+        join_date: Date.new(2005, 6, 1),
+        left_date: nil
+    },
+    {
+        name: 'Steve Jobs',
+        description: '<h1>S. Jobs</h1><p>Hello world</p>',
+        join_date: Date.new(2011, 3, 15),
+        left_date: Date.new(2013, 5, 6)
+    },
+    {
+        name: 'Bill Gates',
+        description: '<h1>W. H. Gates</h1><p>Hello w</p>',
+        join_date: Date.new(1997, 4, 7),
+        left_date: Date.new(2005, 11, 30)
+    }
 ])
 
 projects[0].categories << categories[0..1]
@@ -67,3 +82,7 @@ projects[2].technologies << technologies[2] << technologies[6] << technologies[1
 projects[0].contributors << contributors[0..1]
 projects[1].contributors << contributors[1..2]
 projects[2].contributors << contributors[2] << contributors[0]
+
+contributors[0].technologies << technologies[0..2]
+contributors[1].technologies << technologies[3..5]
+contributors[2].technologies << technologies[6..10]
