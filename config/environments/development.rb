@@ -65,4 +65,6 @@ Rails.application.configure do
     Bullet.enable = true
     Bullet.alert  = true
   end
+
+  config.base_url = 'http://localhost:3000'
 end

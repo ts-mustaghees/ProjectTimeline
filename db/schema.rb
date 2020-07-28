@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_084133) do
   create_table "contributors", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email"
-    t.string "image", default: "/assets/default-profile.png", null: false
+    t.string "image", default: "../../default-profile.png", null: false
     t.text "description"
     t.date "join_date"
     t.date "left_date"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2020_07_23_084133) do
     t.date "finish_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image"
+    t.string "image", default: "../../default-project.png", null: false
   end
 
   create_table "projects_technologies", id: false, force: :cascade do |t|

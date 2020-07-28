@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create([
     { email: 'admin@yahoo.com', password: 'password', password_confirmation: 'password' }
@@ -16,21 +9,21 @@ projects = Project.create([
         description: '<h1>US Health Project</h1><h3>By US Department of Health</h3>',
         start_date: Date.new(2001, 11, 27),
         finish_date: Date.new(2003,7,17),
-        image: '/uploads/proj1.jpg'
+        image: Rails.root.join("app/assets/images/default-project.png").open
     },
     {
         title: 'Common Welfare Program',
         description: '<h1>Hello world</h1>',
         start_date: Date.new(2012, 1, 1),
         finish_date: Date.new(2013,6,5),
-        image: '/uploads/proj2.jpg'
+        image: Rails.root.join("app/assets/images/default-project.png").open
     },
     {
         title: 'COVID19 Vaccine Project',
         description: '<p>asdf zxcv</p>',
         start_date: Date.new(2020, 6, 15),
         finish_date: Date.new(2022,7,5),
-        image: '/uploads/proj3.jpg'
+        image: Rails.root.join("app/assets/images/default-project.png").open
     }
 ])
 
@@ -53,7 +46,7 @@ technologies = Technology.create([
 contributors = Contributor.create([
     {
         name: 'M Irfan',
-        email: 'irfan@google.com'
+        email: 'irfan@google.com',
         description: '<h1>M Irfan</h1><p>Hello world</p>',
         join_date: Date.new(2005, 6, 1),
         left_date: nil
@@ -66,7 +59,7 @@ contributors = Contributor.create([
     },
     {
         name: 'Bill Gates',
-        email: 'whgates@gates.com'
+        email: 'whgates@gates.com',
         description: '<h1>W. H. Gates</h1><p>Hello w</p>',
         join_date: Date.new(1997, 4, 7),
         left_date: Date.new(2005, 11, 30)

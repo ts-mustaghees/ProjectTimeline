@@ -1,4 +1,5 @@
-modal = `<div class="modal fade" id="editContributorModal" tabindex="-1" role="dialog" aria-labelledby="editContributorModalLabel" aria-hidden="true">
+modal = `
+<div class="modal fade" id="editContributorModal" tabindex="-1" role="dialog" aria-labelledby="editContributorModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -9,11 +10,16 @@ modal = `<div class="modal fade" id="editContributorModal" tabindex="-1" role="d
       </div>
       <div class="modal-body">
         <%= form_for @contributor, url: contributor_path(@contributor) do |f| %>
-          <div class="form-group">
-            <%= f.label 'Avatar' %>
-            <%= f.text_field :image, class: 'form-control' %>
+          <div class="row">
+            <div class="col-4">
+              <%= image_tag @contributor.image.url, id: 'edit-avatar' %>
+            </div>
+            <div class="col-7 custom-file">
+              <%= f.file_field :image, class: 'custom-file-input', id: 'avatar-editor' %>
+              <%= f.label 'Avatar', class: 'custom-file-label', for: 'avatar-editor' %>
+            </div>
           </div>
-          <div class="form-group">
+          <div class="form-group mt-4">
             <%= f.label :name %>
             <%= f.text_field :name, class: 'form-control' %>
           </div>
@@ -46,7 +52,11 @@ modal = `<div class="modal fade" id="editContributorModal" tabindex="-1" role="d
             <%= f.submit 'Update', class: 'btn btn-primary' %>
           </div>
         <% end %>
-      </div></div></div></div>`
+      </div>
+    </div>
+  </div>
+</div>
+`
 
 $('#editContributorModal').remove()
 $('body').append(modal)
@@ -57,7 +67,7 @@ $('.multi-select').select2({
 })
 
 ClassicEditor
-  .create( document.querySelector( '#edit-editor' ) )
-  .catch( error => {
-      console.log( error )
-  } )
+  .create(document.querySelector('#edit-editor'))
+  .catch(error => {
+    console.log(error)
+  })

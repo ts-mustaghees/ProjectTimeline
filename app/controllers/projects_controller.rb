@@ -3,7 +3,8 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:edit, :show, :update, :destroy]
 
     def index
-        @projects = Project.all
+        @projects   = Project.all
+        @categories = Category.all
     end
 
     def edit

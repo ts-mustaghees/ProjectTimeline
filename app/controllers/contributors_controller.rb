@@ -1,6 +1,6 @@
 class ContributorsController < ApplicationController
     before_action :authenticate_admin!, except: [:index]
-    before_action :set_contributor, only: [:edit, :update]
+    before_action :set_contributor, only: [:edit, :show, :update]
 
     def index
         @contributors = Contributor.all

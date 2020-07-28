@@ -19,7 +19,35 @@
   </div>
 </div>
 
-<% @contributors.each do |c| %>
-    <h2><%= c.name %></h2>
-    <%= image_tag c.image, alt: 'Profile pic', width: 300, height: 300 %>
-<% end %>
+<div class="container my-5">
+  <table class="table">
+    <tbody>
+      <% @contributors.each do |c| %>
+        <tr>
+          <td>
+            <%= link_to raw(image_tag c.image.url, alt: 'Profile pic', width: 50, height: 50), contributor_path(c) %>
+          </td>
+          <td>
+            <h6>Name</h6>
+            <%= link_to c.name, contributor_path(c) %>
+          </td>
+          <td>
+            <h6>ID</h6>
+            <%= link_to c.id, contributor_path(c) %>
+          </td>
+          <td>
+            <h6>Email</h6>
+            <%= c.email && c.email.length > 0 ? link_to(c.email, contributor_path(c)) : 'N/A' %>
+          </td>
+          <td>
+            <h6>Projects</h6>
+            <%= c.projects.size %>
+          </td>
+          <td>
+            <h6>Technologies</h6>
+            <%= c.technologies.size %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

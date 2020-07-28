@@ -1,0 +1,60 @@
+<% provide :title, @contributor.name %>
+
+<div class="page-title page-title-dark page-title-normal" style="background-image: url(https://techno-soft.com/wp-content/uploads/2018/06/bg-ts-site.jpg);">
+  <div class="inner">
+    <div class="breadcrumbs"><!-- Breadcrumb NavXT 6.2.1 -->
+      <span property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage" title="Go to Technosoft Solutions." href="https://techno-soft.com" class="home">
+          <span property="name">Home</span>
+        </a>
+        <meta property="position" content="1">
+      </span>
+      <span class="separator background-primary"></span>
+      <span property="itemListElement" typeof="ListItem">
+        <a property="item" typeof="WebPage" title="Go to the contributors page." href="<%= contributors_path %>" class="taxonomy silicon_portfolio_category">
+          <span property="name">Contributors</span>
+        </a>
+        <meta property="position" content="2">
+      </span>
+      <span class="separator background-primary"></span>
+      <span property="itemListElement" typeof="ListItem">
+        <span property="name"><%= @contributor.name %></span>
+        <meta property="position" content="3">
+      </span>
+    </div>
+    <%= image_tag @contributor.image.url, class: 'aligncenter wp-image-5461 size-full mb-3', alt: 'Project Image', style: 'width: 275px; border-radius: 50%;' %>
+    <h1><%= @contributor.name %></h1>
+    <div class="page-title-meta border-default-top">
+      <div class="post-meta font-family-nav">
+        <%= link_to raw("<i class='fa fa-calendar'></i> #{@contributor.join_date} &mdash; <i class='fa fa-calendar'></i> #{@contributor.left_date}"), contributor_path(@contributor), class: 'post-date navi-link-hover-color' %>
+      </div>
+      <div class="d-flex mt-3 justify-content-center">
+        <% @contributor.projects.each do |c| %>
+          <%= link_to '', project_path(c), class: "circle-image", style: "background-image: url(#{c.image})", title: "Project #{c.title}" %>
+        <% end %>
+      </div>
+      <div class="post-categories font-family-nav mt-5">
+        <% @contributor.technologies.each do |t| %>
+          <%= link_to t.title, '#', style: "background-color: #3d59f9; color: #ffffff;" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<article id="post-5419" class="post-5419 silicon_portfolio type-silicon_portfolio status-publish has-post-thumbnail hentry silicon_portfolio_category-hipaa silicon_portfolio_category-hl7-integration silicon_portfolio_category-smart-on-fhir mt-5">
+  <div class="container">
+    <%= raw(@contributor.description) %>
+  </div>
+  <section class="fw-section layout-boxed without-overlay without-parallax mb-5" data-offset-top="180">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="vc_empty_space" style="height: 18px"><span class="vc_empty_space_inner"></span></div>
+          <div class="text-block">
+            <h3><span style="color: #222222;">Starting any Healthcare Integration Project? Get Your questions answered in a Free 30 minutes consultancy!</span></h3>
+          </div>
+          <a href="https://techno-soft.com/contact.html" target="_blank" class="btn btn-solid btn-pill btn-primary btn-nl">Contact Us</a></div>
+      </div>
+    </div>
+  </section>
+</article>

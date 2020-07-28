@@ -3,7 +3,7 @@ class CreateContributorsAndTechnologies < ActiveRecord::Migration[5.2]
     create_table :contributors do |t|
       t.string :name,  null: false, default: ""
       t.string :email
-      t.string :image, null: false, default: "/assets/default-profile.png"
+      t.string :image, null: false, default: "../../default-profile.png"
       t.text   :description
 
       t.date   :join_date

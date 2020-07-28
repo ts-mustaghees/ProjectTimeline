@@ -1,6 +1,6 @@
 <div class="grid-item hipaa hl7-integration smart-on-fhir col-4">
   <article class="portfolio-post portfolio-post-tile post-5419 silicon_portfolio type-silicon_portfolio status-publish has-post-thumbnail hentry silicon_portfolio_category-hipaa silicon_portfolio_category-hl7-integration silicon_portfolio_category-smart-on-fhir">
-    <%= image_tag project.image, alt: 'Project thumbnail', class: "attachment-post-thumbnail size-post-thumbnail wp-post-image", width: "450", height: "350" %>
+    <%= image_tag project.image.url, alt: 'Project thumbnail', class: "attachment-post-thumbnail size-post-thumbnail wp-post-image", width: "450", height: "350" %>
     <div class="portfolio-post-tile-icon-links"> <%= link_to raw('<i class="fa fa-link"></i>'), project_path(project), class: 'navi-link-color' %></div>
     <h3 class="portfolio-tile-title">
       <%= link_to project.title, project_path(project), class: 'text-white' %>
