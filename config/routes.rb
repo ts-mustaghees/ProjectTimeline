@@ -15,5 +15,8 @@ Rails.application.routes.draw do
   resources :technologies, only: [:edit, :create, :update, :destroy]
   resources :categories,   only: [:edit, :create, :update, :destroy]
 
+  # API
+  get 'api/projects', to: 'api#projects'
+
   root 'projects#index'
 end

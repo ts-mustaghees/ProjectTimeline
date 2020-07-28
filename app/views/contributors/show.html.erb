@@ -22,15 +22,17 @@
         <meta property="position" content="3">
       </span>
     </div>
+
     <%= image_tag @contributor.image.url, class: 'aligncenter wp-image-5461 size-full mb-3', alt: 'Project Image', style: 'width: 275px; border-radius: 50%;' %>
     <h1><%= @contributor.name %></h1>
+
     <div class="page-title-meta border-default-top">
       <div class="post-meta font-family-nav">
         <%= link_to raw("<i class='fa fa-calendar'></i> #{@contributor.join_date} &mdash; <i class='fa fa-calendar'></i> #{@contributor.left_date}"), contributor_path(@contributor), class: 'post-date navi-link-hover-color' %>
       </div>
       <div class="d-flex mt-3 justify-content-center">
-        <% @contributor.projects.each do |c| %>
-          <%= link_to '', project_path(c), class: "circle-image", style: "background-image: url(#{c.image})", title: "Project #{c.title}" %>
+        <% @contributor.projects.each do |p| %>
+          <%= link_to '', project_path(p), class: "circle-image", style: "background-image: url(#{p.image})", title: "Project #{p.title}" %>
         <% end %>
       </div>
       <div class="post-categories font-family-nav mt-5">
@@ -58,3 +60,7 @@
     </div>
   </section>
 </article>
+
+<div id="pdf-download">
+  <i class="fa fa-download"></i>
+</div>

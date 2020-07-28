@@ -26,16 +26,16 @@
           <div class="vc_empty_space" style="height: 28px"><span class="vc_empty_space_inner"></span></div>
           <nav id="portfolio-37d264b8-filter" class="nav-filters isotope-filter text-center" data-grid-id="portfolio-37d264b8-grid">
             <ul>
-              <li class="active"><a href="#" data-filter="*">All</a></li>
+              <li class="active"><a href="#" data-filter='0'>All</a></li>
               <% @categories.each do |c| %>
-                <li><a href="#" data-filter=".emr-ehr"><%= c.name %></a></li>
+                <li><a href="#" data-filter="<%= c.id %>"><%= c.name %></a></li>
               <% end %>
             </ul>
           </nav>
-          <div id="portfolio-37d264b8-grid" class="masonry-grid isotope-grid grid-with-gap filtered-grid row" style="position: relative; height: 897px;">
+          <div id="portfolio-37d264b8-grid" class="masonry-grid isotope-grid grid-with-gap filtered-grid row" style="position: relative;">
             <div class="grid-sizer"></div>
 
-            <%= render @projects %>
+            <%#= render @projects %>
 
           </div>
           <section class="pagination font-family-nav border-default-top border-default-bottom text-center justify-content-center">
@@ -52,10 +52,68 @@
                 </div>
               </div>
             </div>
-             <a href="#" class="btn btn-link btn-pill btn-sm btn-default" rel="nofollow" data-si-load-more="{&quot;action&quot;:&quot;silicon_portfolio_load_more&quot;,&quot;nonce&quot;:&quot;1d7ff2fe9e&quot;,&quot;type&quot;:&quot;with-gap&quot;,&quot;query&quot;:{&quot;posts_per_page&quot;:9,&quot;orderby&quot;:&quot;date&quot;,&quot;order&quot;:&quot;ASC&quot;,&quot;post_type&quot;:&quot;silicon_portfolio&quot;,&quot;post_status&quot;:&quot;publish&quot;,&quot;meta_query&quot;:[{&quot;key&quot;:&quot;_thumbnail_id&quot;,&quot;compare&quot;:&quot;EXISTS&quot;}],&quot;tax_query&quot;:[{&quot;taxonomy&quot;:&quot;silicon_portfolio_category&quot;,&quot;field&quot;:&quot;slug&quot;,&quot;terms&quot;:[&quot;mhealth&quot;,&quot;emr-ehr&quot;,&quot;hl7-integration&quot;,&quot;hipaa&quot;,&quot;smart-on-fhir&quot;]}]},&quot;page&quot;:2,&quot;total&quot;:21,&quot;perPage&quot;:9,&quot;gridID&quot;:&quot;portfolio-37d264b8-grid&quot;}"><i class="si si-load-more"></i> Load More (<span data-load-more-counter="9">9</span>)</a></section>
+            <a id="loader" href="#" class="btn btn-link btn-pill btn-sm btn-default" rel="nofollow"><i class="fa fa-chevron-down"></i> Load More (<span data-load-more-counter="9">9</span>)</a>
+          </section>
           <div class="vc_empty_space" style="height: 60px"><span class="vc_empty_space_inner"></span></div>
         </div>
       </div>
     </div>
   </section>
 </article>
+
+<script>
+  function renderProject(img_url, project_url, project_title) {
+    const PROJECT = `
+      <div class="grid-item hipaa hl7-integration smart-on-fhir col-4">
+        <article class="portfolio-post portfolio-post-tile post-5419 silicon_portfolio type-silicon_portfolio status-publish has-post-thumbnail hentry silicon_portfolio_category-hipaa silicon_portfolio_category-hl7-integration silicon_portfolio_category-smart-on-fhir">
+          <img src="${img_url}" alt='Project thumbnail' class="attachment-post-thumbnail size-post-thumbnail wp-post-image" width="450" height="350" />
+          <div class="portfolio-post-tile-icon-links">
+            <a href="${project_url}" class='navi-link-color'><i class="fa fa-link"></i></a>
+          </div>
+          <h3 class="portfolio-tile-title">
+            <a href="${project_url}" class='text-white'>${project_title}</a>
+          </h3>
+          <div class="portfolio-post-info">
+            <div class="svg-bg"> <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"> <path d="m 0 10 l 100 -10, 0 100, -100 0 z" fill="white"></path> </svg></div>
+            <h3 class="portfolio-tile-title">
+              <a href="${project_url}" class='navi-link-color navi-link-hover-color'>${project_title}</a>
+            </h3>
+            <!--p class="portfolio-tile-text">Behavioral Health SMART on FHIR app Client: Large Children's Hospital on the East Coast Purpose: Improving the quality of care for ADHD patients. Our client is a Behavioral health Information system focused on providing evidence-based tools for improving the quality of care for ADHD (Attention deficit hyperactivity disorder) patients. Software is used by physicians, parents,...</p-->
+          </div>
+        </article>
+      </div>
+    `
+    return PROJECT
+  }
+  
+  function renderProjects(projects) {
+    const grid = $('#portfolio-37d264b8-grid')
+    grid.html('')
+  
+    projects.data.forEach(project => {
+      grid.append(renderProject(project.image.url, `/projects/${project.slug}`, project.title))
+    })
+  
+    if (projects.more === 0)
+      $('#loader').hide()
+    else
+      $('#loader>span').html(projects.more)
+  }
+  
+  $('a[data-filter]').on('click', function(e) {
+    e.preventDefault()
+    $('#portfolio-37d264b8-filter li.active').removeClass('active')
+    $(this).parent().addClass('active')
+    const category = $(this).attr('data-filter')
+    getProjects(renderProjects, category)
+  })
+
+  $('#loader').on('click', function(e) {
+    e.preventDefault()
+    const category = $('#portfolio-37d264b8-filter li.active a[data-filter]').attr('data-filter')
+    const offset = $('.grid-item').length
+    getProjects(renderProjects, category, offset)
+  })
+  
+  getProjects(renderProjects, 0)
+</script>

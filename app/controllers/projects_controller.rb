@@ -3,8 +3,16 @@ class ProjectsController < ApplicationController
     before_action :set_project, only: [:edit, :show, :update, :destroy]
 
     def index
-        @projects   = Project.all
         @categories = Category.all
+    end
+
+    def show
+        respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: 'project', layout: 'pdf'
+            end
+        end
     end
 
     def edit
@@ -132,7 +140,7 @@ class ProjectsController < ApplicationController
 
     private
         def set_project
-            @project = Project.find_by(id: params[:id])
+            @project = Project.friendly.find(params[:id])
         end
 
         def permitted_params

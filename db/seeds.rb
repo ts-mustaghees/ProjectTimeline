@@ -24,6 +24,48 @@ projects = Project.create([
         start_date: Date.new(2020, 6, 15),
         finish_date: Date.new(2022,7,5),
         image: Rails.root.join("app/assets/images/default-project.png").open
+    },
+    {
+        title: 'Test Proj 1',
+        description: '<p>asdf zxcv</p>',
+        start_date: Date.new(2020, 6, 15),
+        finish_date: Date.new(2022,7,5),
+        image: Rails.root.join("app/assets/images/default-project.png").open
+    },
+    {
+        title: 'Test Proj 2',
+        description: '<p>asdf zxcv</p>',
+        start_date: Date.new(2020, 6, 15),
+        finish_date: Date.new(2022,7,5),
+        image: Rails.root.join("app/assets/images/default-project.png").open
+    },
+    {
+        title: 'Test Proj 3',
+        description: '<p>asdf zxcv</p>',
+        start_date: Date.new(2020, 6, 15),
+        finish_date: Date.new(2022,7,5),
+        image: Rails.root.join("app/assets/images/default-project.png").open
+    },
+    {
+        title: 'Test Proj 4',
+        description: '<p>asdf zxcv</p>',
+        start_date: Date.new(2020, 6, 15),
+        finish_date: Date.new(2022,7,5),
+        image: Rails.root.join("app/assets/images/default-project.png").open
+    },
+    {
+        title: 'Test Proj 5',
+        description: '<p>asdf zxcv</p>',
+        start_date: Date.new(2020, 6, 15),
+        finish_date: Date.new(2022,7,5),
+        image: Rails.root.join("app/assets/images/default-project.png").open
+    },
+    {
+        title: 'Test Proj 6',
+        description: '<p>asdf zxcv</p>',
+        start_date: Date.new(2020, 6, 15),
+        finish_date: Date.new(2022,7,5),
+        image: Rails.root.join("app/assets/images/default-project.png").open
     }
 ])
 

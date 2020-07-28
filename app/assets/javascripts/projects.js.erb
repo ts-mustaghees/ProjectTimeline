@@ -1,0 +1,13 @@
+function getProjects(callback, category='', offset='') {
+    //const response = await fetch("<%= Rails.application.routes.url_helpers.projects_path %>", {
+    //    headers: {
+    //        'content-type': 'application/json'
+    //    }
+    //})
+    //const data = await response.json()
+    //return data
+
+    $.get(`<%= Rails.application.routes.url_helpers.api_projects_path %>?category=${category}&offset=${offset}`, function (data) {
+        callback(data)
+    })
+}

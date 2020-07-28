@@ -36,3 +36,16 @@ table.new tr > td {
 .circle-image:not(:first-of-type) {
     margin-left: 20px;
 }
+
+#pdf-download {
+    position: fixed;
+    background: #3d59f9;
+    bottom: 2rem;
+    right: 2rem;
+    padding: 20px;
+    z-index: 99;
+    border-radius: 50%;
+    font-size: 32px;
+    color: #fff;
+    cursor: pointer;
+}

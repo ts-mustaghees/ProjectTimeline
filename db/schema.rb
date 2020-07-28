@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_23_084133) do
+ActiveRecord::Schema.define(version: 2020_07_28_101809) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,12 +46,14 @@ ActiveRecord::Schema.define(version: 2020_07_23_084133) do
   create_table "contributors", force: :cascade do |t|
     t.string "name", default: "", null: false
     t.string "email"
-    t.string "image", default: "../../default-profile.png", null: false
+    t.string "image", default: "../../../default-profile.png", null: false
     t.text "description"
     t.date "join_date"
     t.date "left_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_contributors_on_slug", unique: true
   end
 
   create_table "contributors_projects", id: false, force: :cascade do |t|
@@ -77,7 +79,9 @@ ActiveRecord::Schema.define(version: 2020_07_23_084133) do
     t.date "finish_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "image", default: "../../default-project.png", null: false
+    t.string "image", default: "../../../default-project.png", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_projects_on_slug", unique: true
   end
 
   create_table "projects_technologies", id: false, force: :cascade do |t|

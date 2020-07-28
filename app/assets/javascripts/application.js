@@ -24,3 +24,9 @@ function editorCancel(n) {
     editor.parent().find('td.hidden').removeClass('hidden')
     editor.remove()
 }
+
+$(document).ready(function() {
+    $('#pdf-download').click(function(e) {
+        window.location = window.location + '.pdf'
+    })
+})

@@ -6,6 +6,15 @@ class ContributorsController < ApplicationController
         @contributors = Contributor.all
     end
 
+    def show
+        respond_to do |format|
+            format.html
+            format.pdf do
+                render pdf: 'contributor', layout: 'pdf'
+            end
+        end
+    end
+
     def edit
         @technologies = []
         Technology.select{ |t| @technologies << {id: t.id, title: t.title} }
@@ -77,7 +86,7 @@ class ContributorsController < ApplicationController
 
     private
         def set_contributor
-            @contributor = Contributor.find_by(id: params[:id])
+            @contributor = Contributor.friendly.find(params[:id])
         end
 
         def permitted_params
