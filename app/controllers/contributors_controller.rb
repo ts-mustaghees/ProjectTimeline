@@ -48,7 +48,7 @@ class ContributorsController < ApplicationController
         if @contributor.update_attributes(permitted_params)
             technologies = params[:technologies]
 
-            technologies.each do |t|
+            technologies && technologies.each do |t|
                 t = Technology.find_or_create_by(title: t)
                 if !@contributor.technologies.include? t
                     @contributor.technologies << t
@@ -58,7 +58,7 @@ class ContributorsController < ApplicationController
             # remove non-submitted technologies
             contributor_technologies = @contributor.technologies
             contributor_technologies.each do |t|
-                if !technologies.include? t.title
+                if !technologies.try(:include?, t.title)
                     @contributor.technologies.delete(t)
                 end
             end

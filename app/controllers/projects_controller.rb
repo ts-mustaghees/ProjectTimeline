@@ -36,21 +36,21 @@ class ProjectsController < ApplicationController
         if new_project.save
             # Add technologies
             technologies = params[:technologies]
-            technologies.each do |t|
+            technologies && technologies.each do |t|
                 t = Technology.find_or_create_by(title: t)
                 new_project.technologies << t
             end
 
             # Add categories
             categories = params[:categories]
-            categories.each do |c|
+            categories && categories.each do |c|
                 c = Category.find_or_create_by(name: c)
                 new_project.categories << c
             end
 
             # Add contributors
             contributors = params[:contributors]
-            contributors.each do |c|
+            contributors && contributors.each do |c|
                 c = Contributor.find(c)
                 new_project.contributors << c
             end
@@ -68,7 +68,7 @@ class ProjectsController < ApplicationController
         if @project.update_attributes(permitted_params)
             technologies = params[:technologies]
 
-            technologies.each do |t|
+            technologies && technologies.each do |t|
                 t = Technology.find_or_create_by(title: t)
                 if !@project.technologies.include? t
                     @project.technologies << t
@@ -78,14 +78,14 @@ class ProjectsController < ApplicationController
             # remove non-submitted technologies
             project_technologies = @project.technologies
             project_technologies.each do |t|
-                if !technologies.include? t.title
+                if !technologies.try(:include?, t.title)
                     @project.technologies.delete(t)
                 end
             end
 
             categories   = params[:categories]
 
-            categories.each do |c|
+            categories && categories.each do |c|
                 c = Category.find_or_create_by(name: c)
                 if !@project.categories.include? c
                     @project.categories << c
@@ -95,12 +95,12 @@ class ProjectsController < ApplicationController
             # remove non-submitted categories
             project_categories = @project.categories
             project_categories.each do |c|
-                if !categories.include? c.name
+                if !categories.try(:include?, c.name)
                     @project.categories.delete(c)
                 end
             end
 
-            contributors = params[:contributors].map(&:to_i)
+            contributors = params[:contributors].map(&:to_i) unless params[:contributors].nil?
 
             contributors && contributors.each do |c|
                 c = Contributor.find(c)
@@ -112,7 +112,7 @@ class ProjectsController < ApplicationController
              # remove non-submitted contributors
              project_contributors = @project.contributors
              project_contributors.each do |c|
-                 if !contributors.include? c.id
+                 if !contributors.try(:include?, c.id) 
                      @project.contributors.delete(c)
                  end
              end

@@ -86,18 +86,20 @@
     return PROJECT
   }
   
-  function renderProjects(projects) {
+  function renderProjects(projects, clear=true) {
     const grid = $('#portfolio-37d264b8-grid')
-    grid.html('')
+    if (clear) grid.html('')
   
     projects.data.forEach(project => {
       grid.append(renderProject(project.image.url, `/projects/${project.slug}`, project.title))
     })
   
-    if (projects.more === 0)
+    if (projects.more <= 0)
       $('#loader').hide()
-    else
+    else {
+      $('#loader').show()
       $('#loader>span').html(projects.more)
+    }
   }
   
   $('a[data-filter]').on('click', function(e) {
@@ -112,7 +114,7 @@
     e.preventDefault()
     const category = $('#portfolio-37d264b8-filter li.active a[data-filter]').attr('data-filter')
     const offset = $('.grid-item').length
-    getProjects(renderProjects, category, offset)
+    getProjects(renderProjects, category, offset, false)
   })
   
   getProjects(renderProjects, 0)
