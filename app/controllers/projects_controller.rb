@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-    before_action :authenticate_admin!, except: [:index]
+    before_action :authenticate_admin!, except: [:index, :show]
     before_action :set_project, only: [:edit, :show, :update, :destroy]
 
     def index
